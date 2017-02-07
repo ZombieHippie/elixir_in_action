@@ -6,10 +6,14 @@ defmodule Todo.DatabaseWorker do
   end
 
   def store(worker, key, data) do
+    IO.inspect { "WORKER store", worker, key, data }
+
     GenServer.cast(worker, {:store, key, data})
   end
 
   def get(worker, key) do
+    IO.inspect { "WORKER get", worker, key }
+
     GenServer.call(worker, {:get, key})
   end
 
